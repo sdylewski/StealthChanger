@@ -5,7 +5,6 @@ parent: Building
 ---
 <!-- Use the page layout at TOC.md:  https://github.com/sdylewski/StealthChanger/blob/main/docs/TOC.md -->
 
-(original page, needs to be updated)
 ## Printer Calibration
 The SteatlthChanger shuttle and backplate need to mate together with good tolerances, especially when using the recommended CNC-machined shuttles.  In order to not drive yourself crazy, please calibrate and tune your printer settings before starting this project. [Don't just use a calibration cube](https://www.youtube.com/watch?v=H7OsnMLDIMwa)!
 
@@ -30,7 +29,8 @@ All print settings are the same as [Voron Standards](https://docs.vorondesign.co
 * Solid top/bottom layers: 5
 * Supports: NONE
 
-Since every filament shrinks at a different rate and our tolerances are too tight to allow for "pre-scalling".  You need to calibrate the shrinkage for each and every filament you use, even the same brand but different colour can shrink at a different rate.  We recommend using Califlower for each filament.
+Since every filament shrinks at a different rate and our tolerances are too tight to allow for "pre-scalling".  You need to calibrate the shrinkage for each and every filament you use, even the same brand but different colour can shrink at a different rate.  We recommend using [Cauliflower](#shrinkage-and-skew) for each filament.
+
 
 - Shuttle is the only part that requires supports and should be set to `touching build plate`
 

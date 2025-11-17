@@ -41,7 +41,7 @@ parent: Toolheads
 
 ### User Mods
 
-*No user mod PCB mounts documented yet. Check the [StealthChanger UserMods](https://github.com/DraftShift/StealthChanger/tree/main/UserMods) directory for community contributions.*
+* TBD
 
 ## Toolhead Options & Mods
 

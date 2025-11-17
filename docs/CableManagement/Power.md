@@ -21,11 +21,44 @@ For 24V power, and Power = I * V
 
 ## Power supplies
 
-Common options are the Meanwell LRS-24-350 for 350w, LRS-24-450 for 450w and LRS-24-600 for 600W. Make sure you have enough room in your electronics bay because they are not all the same size.
-Note that unlike the 200W version the 450 and 600W are actively cooled with an annoyingly loud fan that will kick in when its temperature gets too hot so good electronic bay ventilation is recommended.
+### Meanwell LRS Series (24V)
 
-Other options are UHP variants with a smaller form factor (//TODO), often using 2 low wattages PSUs combined. Make sure if you use multiple PSUs that you tie the GND of each one together to have a common reference point otherwise communications issues will arise 
+Common options for 24V power supplies. Make sure you have enough room in your electronics bay because they are not all the same size.
 
-// TODO: power management mitigation in SW so all heaters aren't on at the same time (add link to code or slicer settings?)
+| Model | Power Rating | Dimensions (L×W×H) | Cooling | Notes |
+|-------|--------------|-------------------|---------|-------|
+| **LRS-200-24** | 200W (8.8A) | 215 × 115 × 30 mm | Fanless | Silent operation, suitable for single toolhead or low-power multi-tool setups |
+| **LRS-350-24** | 350W (14.6A) | 215 × 115 × 30 mm | Built-in fan | **Loud fan noise** - fan activates when temperature rises. Same case size as 200W model |
+| **LRS-450-24** | 450W (18.8A) | 225 × 124 × 35 mm | Built-in fan | **Loud fan noise** - fan activates when temperature rises. **Larger case** than 200/350W models - check fit in electronics bay |
+| **LRS-600-24** | 600W (25A) | 225 × 124 × 35 mm | Built-in fan | **Loud fan noise** - fan activates when temperature rises. Highest power option. **Larger case** than 200/350W models - check fit in electronics bay |
+
+**Note:** Models 350W and above use active cooling with built-in fans that can be annoyingly loud when they kick in. The fan activates based on temperature, so good electronics bay ventilation is recommended to minimize fan runtime. The 200W model is fanless and silent.
+
+### Meanwell U-Bracket Series (24V)
+
+| Model | Power Rating | Dimensions (L×W×H) | Cooling | Notes |
+|-------|--------------|-------------------|---------|-------|
+| **UHP-200-24** | 200W (8.4A) | 194 × 55 × 26 mm | Convection | Slim design |
+| **UHP-350-24** | 350W (14.6A) | 220 × 62 × 31 mm | Convection | Slim design |
+| **UHP-500-24** | 500W (20.9A) | 233 × 81 × 31 mm | Convection | Slim design |
+
+**Note:** At higher power supply temperatures, UHP (and other) power supplies reduce their output capability (derated). It's important to keep the power supply cool with good electronics bay ventilation/fan to maintain full rated output.
+
+### Multiple Power Supplies
+
+Other options include using multiple lower-wattage PSUs combined in parallel. **Important:** If you use multiple PSUs, you must tie the GND (ground) of each one together to have a common reference point, otherwise communications issues will arise. 
+
+## Limiting power draw
+
+To reduce peak power requirements, you can prevent all toolheads from heating to full temperature simultaneously. The most effective method is using **ooze prevention** settings in your slicer, which keeps inactive tools at a lower idle temperature (typically 30-50°C below print temperature) and only heats them up shortly before they're needed.
+
+**Recommended approach:**
+- Use [ooze prevention settings](../SoftwareAndConfig/Slicers.md#can-i-use-ooze-prevention-and-pre-heating) in your slicer (available in OrcaSlicer and PrusaSlicer)
+
+
+**Other methods:**
+- Stagger tool heating in your slicer start G-code (heat tools sequentially rather than simultaneously)
+- Use lower pre-heat temperatures in `PRINT_START` and let tools reach full temperature during the print
+- **Limit heater power in Klipper**: Use the `max_power` parameter in each tool's `[extruder]` or `[extruder1]`, `[extruder2]`, etc. section to limit maximum power output. The value ranges from 0.0 to 1.0 (where 1.0 = 100% power). For example, setting `max_power: 0.7` limits the heater to 70% of its maximum power. This will slow heating but reduces peak power draw. See [Klipper Heater Configuration](https://www.klipper3d.org/Config_Reference.html#extruder) for details.
 
 

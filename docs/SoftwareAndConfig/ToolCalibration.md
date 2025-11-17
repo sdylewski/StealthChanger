@@ -1,11 +1,11 @@
 ---
-title: Toolhead Calibration
+title: Calibration
 nav_order: 3
 parent: Software & Configuration
 ---
 <!-- Use the page layout at TOC.md:  https://github.com/sdylewski/StealthChanger/blob/main/docs/TOC.md -->
 
-# Toolhead Calibration
+# Calibration
 
 A multi-tool printer requires calibration. This page explains what to calibrate, and describes some of the useful tools and techniques.
 
@@ -324,16 +324,6 @@ Input shaper compensates for printer vibrations to reduce ringing and improve pr
 **Next:** [Dock Calibration](DockCalibration.md) → Set up dock positions for reliable tool changes
 
 ## FAQ
-
-**Quick Links:**
-- [Do I need to calibrate offsets on every print?](#do-i-need-to-calibrate-offsets-on-every-print)
-- [Can I use `SAVE_CONFIG` after `PROBE_CALIBRATE`?](#can-i-use-save_config-after-probe_calibrate)
-- [My pressure advance doesn't work](#my-pressure-advance-doesnt-work)
-- [Input Shaper shows "peak too far right"](#input-shaper-shows-peak-too-far-right---what-does-this-mean)
-- [Do I need to run Input Shaper calibration for each tool?](#do-i-need-to-run-input-shaper-calibration-for-each-tool)
-- [My PID tuning values keep changing](#my-pid-tuning-values-keep-changing)
-
----
 
 ### Do I need to calibrate offsets on every print?
 No. Offsets remain stable unless hardware changes occur (toolhead disassembly, backplate preload screws adjustment, nozzle swap, etc.). Check periodically for drift, especially before long multicolor prints.

@@ -193,7 +193,7 @@ Make sure you have [StealthChop](https://www.klipper3d.org/TMC_Drivers.html#sett
 If you have [TMC autotune](https://github.com/andrewmcgr/klipper_tmc_autotune), make sure to set the Z motors profile to `performance`, by default Z motors will be on the silent profile.
 
 ### I can't seem to get my tools to sit flush
-Make sure your nozzle blocker cup isn't pushing the tool out of its flush position, ideally retract the cup as far as possible, then make sure the tool sits flush by adjusting the back of the dock, then slowly raise the cup until it touches the nozzle without putting force on the toolhead
+Make sure your nozzle blocker cup isn't pushing the tool out of its flush position, ideally retract the cup as far as possible, then make sure the tool sits flush by adjusting the back of the dock, then slowly raise the cup until it touches the nozzle without putting force on the toolhead. If your dock/toolhead has magnets, make sure the magnets are inserted deeply enough and sit flush.
 
 ### My tool is going straight into the dock, I had to emergency stop
 Make sure the `[rounded_path]` is added to your printer cfg, without it it will ignore the rounded paths in the pickup/dropoff sequence and go straight to the pickup position and the dock will be in the way.

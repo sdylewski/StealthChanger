@@ -31,12 +31,12 @@ x1 per toolhead
 ## Toolheads
 Individual toolhead BOMs are listed on each [toolhead page](../Toolheads/Toolheads.md). These are just a few examples.
 
-### Tools
-* Good ratcheting crimpers for JST-XH and other types of connectors
+### Tools needed
+* Good ratcheting crimpers for JST-XH, JST-PH and other types of connectors
 * Fine soldering iron for LEDs
 
 ### General toolhead BOM
-* part cooling blowers, often 4010 blower
+* part cooling blower fans, often 4010 blower
 * Toolhead hotend fan, often 2510 axial
 * Toolhead boards
 * Backplate for each toolhead
@@ -45,38 +45,7 @@ Individual toolhead BOMs are listed on each [toolhead page](../Toolheads/Toolhea
 * Tons of M3x4x5 heatset inserts
 * M3 SHCS and BHCS assorted screws
 
-### Anthead
-* TBD
-
-### Dragonburner/Rapidburner/Yavoth
-
-- [1] m3x12 BHCS (optional to keep spacer in place)
-- [2] m3x35 SHCS
-- [2] m3 heat inserts
-- [2] m3x8 BHCS (optional in v1.1)
-
-
-### Archetype Blackbird
-
-- [1] m3x12 BHCS (to hold the sherpa mount in place)
-- [2] m3 heat inserts
-- [2] m3x8 BHCS (optional in v1.1)
-
-### Xol
-
-- [2] m3x6 BHCS (backplate lower mounting screws. m3x8 will be too long)
-- [2] m3x20 BHCS (backplate upper mounting screws)
-- [2] m3x8 BHCS (extruder mount to backplate)
-- [2] m3x6 FHCS **magnetic** (preload screws. m3x8 will be too long)
-- You will **not be able** to use stock 2.4 Z joints with Xol or A4T.
-- Replacement of your Z joints with something with a lower profile such as [hartk123's GE5C Z Joint](https://github.com/VoronDesign/VoronUsers/tree/main/printer_mods/hartk1213/Voron2.4_GE5C) or [Ellis'Short Z Joints](https://github.com/VoronDesign/VoronUsers/tree/main/printer_mods/Ellis/Short_Z_Joints) is necessary to avoid bottoming out your Z carriage on the deck panel when using Xol or A4T.
-
-### A4T
-
-- [2] m3x45 SHCS **magnetic** (backplate lower mounting screws)
-- [2] m3x12 BHCS / SHCS (backplate upper mounting screws)
-- [2] m3x6 FHCS **magnetic** (preload screws. m3x8 will be too long)
-- You will **not be able** to use stock 2.4 Z joints with Xol or A4T. See links in Xol section above for links to alternative suggestions.
+For the Toolhead BOM, check the [individual toolhead](../Toolheads/Toolheads.md) pages
 
 
 ## Electronics

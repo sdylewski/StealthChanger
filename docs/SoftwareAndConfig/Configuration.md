@@ -288,7 +288,7 @@ params_pickup_path: [
 - [Can I park the active tool?](#can-i-park-the-active-tool-and-not-select-a-new-one)
 - [I'm getting errors about a T3](#im-getting-errors-about-a-t3-i-dont-even-have-a-t3)
 - [I'm getting a Klipper error about multi_fan](#im-getting-a-klipper-error-about-multi_fan-or-fan_generic)
-
+- [What is SET_TEMPERATURE_WITH_DEADBAND and what value should I set it to?](#what-is-set_temperature_with_deadband-and-what-value-should-i-set-it-to)
 ---
 
 ### Can I skip a number in the tool numbering?
@@ -311,3 +311,12 @@ This happens when your slicer emits a `M106 P3 S0` or `M106 P2 S0` (if you have 
 
 ### I'm getting a Klipper error about multi_fan or fan_generic
 You likely had an older install or copied the config from an older install. This was changed and the fan reference in each tool section `[tool]` is now `fan: Tx_partfan` (e.g., `fan: T0_partfan` for T0, `fan: T1_partfan` for T1).
+
+### What is SET_TEMPERATURE_WITH_DEADBAND and what value should I set it to?
+When ramping up a tool to a target temperature the default is to wait until the temp settles within 0.5° fluctuation before continuing. This can cause delays during a toolchange. A larger deadband increases the tolerance to proceed.
+This is usually not a problem with a single toolhead because the temperature ramps up just once, but with multiple tools cooling down and heating all the time this stall adds up significantly. 
+Note that the first step should be to correctly PID tune your hotend so it ramps up quickly and stabilizes quickly, some hotends like the TZ-V6-2.0 might need manual PID tuning as Klipper's auto PID tune can't find the correct PID values. 
+Increasing the deadband too much means the hotend temperature hasn't stabilized enough for a consistent print and that might give artifacts on your print so only increase it as much as you need.
+
+
+

@@ -32,10 +32,20 @@ parent: Toolheads
 - Several 5x2 or 5x3 N52 magnets to hold toolhead to dock (Highly recommended for non-magnetic docks)
 
 
+## PCB Mounting Options
+
+### Official PCB Mounts (Draftshift Design)
+
+*No official PCB mounts from Draftshift Design. See [Voron Toolhead PCB Mounts](https://github.com/chirpy2605/voron/tree/main/general/PCB_Mounts) or User Mods below.*
+
+### User Mods
+
+| PCB | Extruder | Description | Link |
+|-----|----------|-------------|------|
+| EBB36 | Sherpa Micro | EBB36 Mount With Cover | [Sherpa Micro EBB36 Mount With Cover](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/N3MI-DG/Sherpa_Micro_EBB36_Mount) |
+
 ## Toolhead Options & Mods
-* [Sherpa Micro EBB36 Mount With Cover](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/N3MI-DG/Sherpa_Micro_EBB36_Mount)
 * [Yavoth LED cowl](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/jdmontgomer/Yavoth_LED_Cowl)
-  
   
 ## Dock
 * Dock width: 60mm

@@ -1,15 +1,22 @@
 ---
-title: PRINT_START Macro Example
+title: PRINT_START Macro Example (Minimal)
 parent: Examples
 ---
 
-# PRINT_START Macro Example
+# PRINT_START Macro Example (Minimal)
 
-This is an example `PRINT_START` macro compatible with klipper-toolchanger-easy. This macro initializes the toolchanger, performs homing and QGL, and handles tool selection and heating.
+This is a minimal `PRINT_START` macro for StealthChanger using klipper-toolchanger-easy. This version provides the essential functionality without advanced features.
 
-**Important:** klipper-toolchanger-easy provides a `PRINT_START` macro by default. This example shows what the macro does and can be used as a reference if you need to customize it. If you need custom startup behavior, modify the macro in `stealthchanger/macros.cfg` or use the provided hooks.
+**Important:** klipper-toolchanger-easy provides a `PRINT_START` macro by default. This minimal example shows the basic implementation. For advanced features like smart QGL selection and tool detection, see the [Advanced PRINT_START Example](PRINT_START.md).
 
-**Note:** The `_PARK_ON_COOLING_PAD` macro call (if present) is not needed for StealthChanger and can be commented out or removed.
+## Common StealthChanger Variables
+
+The `PRINT_START` macro uses several variables that slicers pass:
+
+- **`TOOL`** - The initial tool number to use (e.g., `0`, `1`, `2`)
+- **`TOOL_TEMP`** - The target temperature for the initial tool
+- **`BED_TEMP`** - The target bed temperature
+- **`T0_TEMP`, `T1_TEMP`, `T2_TEMP`, etc.** - Pre-heat temperatures for additional tools (optional, for multi-tool prints)
 
 {% raw %}
 ```ini
@@ -63,12 +70,6 @@ gcode:
     
     # Restart tool probe crash detection
     START_TOOL_PROBE_CRASH_DETECTION
-    
-    # Optional: Prime the nozzle (uncomment if needed)
-    # G92 E0
-    # G1 Z0.2 F3000
-    # G1 X10 Y10 E5 F1000
-    # G92 E0
 ```
 {% endraw %}
 
@@ -98,9 +99,9 @@ PRINT_START TOOL=0 TOOL_TEMP=220 BED_TEMP=60 T0_TEMP=220 T1_TEMP=230 T2_TEMP=250
 
 1. Initializes the toolchanger (`INITIALIZE_TOOLCHANGER`)
 2. Stops tool probe crash detection
-3. Sets and waits for bed temperature (`M140` / `M190`)
+3. Sets and waits for bed temperature (`M140`)
 4. Homes all axes (`G28`)
-5. Selects T0 (always used for QGL)
+5. Selects T0 for QGL
 6. Heats T0 to 150°C for QGL
 7. Runs Quad Gantry Level (`QUAD_GANTRY_LEVEL`)
 8. Re-homes Z after QGL
@@ -122,4 +123,5 @@ If you need to customize the `PRINT_START` macro:
 
 **Note:** Always ensure T0 is used for the final QGL and Z homing, as this is critical for accurate tool alignment.
 
+**For advanced features:** See the [Advanced PRINT_START Example](PRINT_START_Advanced.md) which includes smart QGL selection and tool detection.
 

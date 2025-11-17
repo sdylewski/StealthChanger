@@ -84,7 +84,7 @@ Add this line to your `printer.cfg` to include the toolchanger configuration:
 - [Can I use Kalico instead of mainline Klipper?](#can-i-use-kalico-instead-of-mainline-klipper)
 - [Do I need to remove my existing PRINT_START macro?](#do-i-need-to-remove-my-existing-print_start-macro)
 - [Will Moonraker updates overwrite my customizations?](#will-moonraker-updates-overwrite-my-customizations)
-
+- [My KTC easy config files are not visible in mainsail](#my-ktc-easy-config-files-are-not-visible-in-mainsail)
 ---
 
 ### Installation fails with "invalid syntax" error
@@ -98,3 +98,6 @@ Yes, klipper-toolchanger-easy provides its own `PRINT_START` macro that is requi
 
 ### Will Moonraker updates overwrite my customizations?
 Yes, if you make manual changes to files in the `stealthchanger/` directory, they will be overwritten when Moonraker updates. Use configuration override files or modify the files in your config directory instead of modifying the installed files directly.
+
+### My KTC easy config files are not visible in mainsail
+Click the refresh button manually to invalidate the cache.

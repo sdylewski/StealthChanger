@@ -40,7 +40,7 @@ parent: Toolheads
 
 ### User Mods
 
-*No user mod PCB mounts documented yet. Check the [StealthChanger UserMods](https://github.com/DraftShift/StealthChanger/tree/main/UserMods) directory for community contributions.*
+* TBD
 
 ## Toolhead Options & Mods
 
@@ -51,16 +51,6 @@ parent: Toolheads
 | Dock Width | Stubby Dock Compatible |
 |------------|------------------------|
 | 76mm | ❌ No |
-
-### Maximum Toolheads per Printer Size
-
-| Printer Size | Max Toolheads |
-|--------------|---------------|
-| Voron 250 | 4 |
-| Voron 300 | 4 |
-| Voron 350 | 5 |
-
-*Calculation assumes 5mm spacing between docks. See [Docks](../Docks.md) for details.*
 
 ### Official Dock Types (Draftshift Design)
 

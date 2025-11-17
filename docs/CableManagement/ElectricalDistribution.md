@@ -72,7 +72,7 @@ You need to be able to talk to all your toolheads. CAN bus is recommended. It se
 
 
 ## Power
-Make sure that the V_in and GND wire that goes from the PSU to your wago's or distribution board has a thicker gauge as it will carry the power of all the toolheads combined. To calculate the wire gauge, calculate the max power consumption of all your toolheads combined, take a healthy margin and use a wire gauge calculator that gives you the cross section or AWG required.
+Make sure that the V_in and GND wire that goes from the PSU to your wagos or distribution board has a thicker gauge as it will carry the power of all the toolheads combined. To calculate the wire gauge, calculate the max power consumption of all your toolheads combined, take a healthy margin and use a wire gauge calculator that gives you the cross section or AWG required.
 
 
 ## CAN termination layout and common issues

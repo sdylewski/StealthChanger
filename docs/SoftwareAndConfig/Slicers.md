@@ -42,7 +42,9 @@ PRINT_START TOOL=0 TOOL_TEMP=220 BED_TEMP=60 T0_TEMP=220 T1_TEMP=230
 
 **Note:** The `_PARK_ON_COOLING_PAD` macro in `PRINT_START` is not needed for StealthChanger and can be commented out or removed if present.
 
-**Example:** See the [PRINT_START macro example](Examples/PRINT_START.md) for a complete reference implementation.
+**Examples:** 
+- [Minimal PRINT_START Example](Examples/PRINT_START_Simple.md) - Basic implementation
+- [Advanced PRINT_START Example](Examples/PRINT_START_Advanced.md) - Enhanced features with smart QGL selection and tool detection
 
 ## Overview
 
@@ -51,14 +53,14 @@ PRINT_START TOOL=0 TOOL_TEMP=220 BED_TEMP=60 T0_TEMP=220 T1_TEMP=230
 
 ## Slicer Software
 
-| Name | Multitool | Issue | Discussion | Notes |
-|:------:|:------:|:------:|:------:|------|
-| Cura | <span style="color: green;">✓</span> | | | As of 5.8, select new printer, select DraftShift Design, select the size from the voron list, allows up to 8 extruders |
-| OrcaSlicer | <span style="color: green;">✓</span> | | | As of 2.2 |
-| PrusaSlicer | <span style="color: green;">✓</span> | | | |
-| Simplify3D | <span style="color: silver;">?</span> | | | |
-| Slic3r | <span style="color: silver;">?</span> | | | |
-| SuperSlicer | <span style="color: green;">✓</span> | | | See [2197](https://github.com/supermerill/SuperSlicer/issues/2197) |
+| Name | Multitool | Notes |
+|:------:|:------:|------|
+| Cura | <span style="color: green;">✓</span> | As of 5.8, select new printer, select DraftShift Design, select the size from the voron list, allows up to 8 extruders |
+| OrcaSlicer | <span style="color: green;">✓</span> | As of 2.2 |
+| PrusaSlicer | <span style="color: green;">✓</span> | |
+| Simplify3D | <span style="color: silver;">?</span> | |
+| Slic3r | <span style="color: silver;">?</span> | |
+| SuperSlicer | <span style="color: green;">✓</span> | See [2197](https://github.com/supermerill/SuperSlicer/issues/2197) |
 
 ## Slicer GCODEs
 
@@ -144,4 +146,23 @@ This is likely Klipper waiting for the temperature of the hotend to settle to th
 Decreasing the Prime volume and width should work, but decreasing width just makes it longer. Adjust the Prime volume setting in your slicer's multi-material settings.
 
 ### Can I use ooze prevention and pre-heating?
-Yes! OrcaSlicer has a feature to prevent oozing of tools that are actively being used by dropping their temperature to an idle temperature. It can also ramp up the temperature back up by a set amount of seconds before the tool is actually being called to make sure the toolhead is ready to go without waiting. This also has the added benefit of not cooking your filament for long periods of time and preventing heat creep, so it's definitely recommended.
+Yes! Ooze prevention is highly recommended for multi-tool printing. It reduces power draw by keeping inactive tools at a lower temperature, prevents filament from oozing, reduces heat creep, and prevents filament from cooking during long prints.
+
+**OrcaSlicer:**
+- Location: Printer Settings → Multi-material → Ooze prevention
+- **Temperature variation**: Recommended 30-50°C below print temperature (e.g., if printing at 220°C, set idle temp to 170-190°C)
+- **Pre-heat time**: Recommended 15-30 seconds before tool change
+- This uses `M104` to pre-heat and `M109` to validate temperature before switching
+
+**PrusaSlicer:**
+- Location: Printer Settings → Multi-material → Ooze prevention
+- Similar settings available as OrcaSlicer
+- Newer versions include an option to turn off tools completely when no longer needed
+
+**Benefits:**
+- **Reduced power draw**: Only the active tool runs at full temperature, significantly reducing peak power requirements
+- **Prevents oozing**: Lower idle temperature prevents filament from oozing out of inactive nozzles
+- **Prevents heat creep**: Keeps filament from getting too hot in the heatbreak
+- **Prevents filament degradation**: Avoids cooking filament during long prints
+
+**Note:** Ensure your PID values are properly tuned for each tool, as the temperature will need to stabilize quickly when switching tools. If you experience long wait times during tool changes, you may need to adjust the temperature deadband in your `M109` macro or increase the pre-heat time.

@@ -106,7 +106,7 @@ By convention, these offsets are set to 0 for T0. The offsets for other tools sp
 
 
 
-**Note:** You can setup your printer to home with Tn if you're only using that one tool during printing, but it requires a more advanced print_start macro. See the [PRINT_START macro example](Examples/PRINT_START.md) for reference.
+**Note:** You can setup your printer to home with Tn if you're only using that one tool during printing, but it requires a more advanced print_start macro. See the [Advanced PRINT_START macro example](Examples/PRINT_START_Advanced.md) for reference.
 
 
 ### G-code Z Offset Calibration Procedure
