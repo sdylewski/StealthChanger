@@ -24,7 +24,7 @@ Full-height dock with back, base, and vertical front plates. Standard height fro
 
 - **Y Build Space Impact**: ~20mm loss
 - **Z Height**: 170mm
-- **Compatibility**: Works with all toolheads and the default door buffer configuration
+- **Compatibility**: Works with all supported toolheads and the default door buffer configuration
 
 ### Short Dock (Official)
 
@@ -36,19 +36,19 @@ Dock with shorter Z height (vertical dimension). Short height front plates posit
 
 ### Stubby Dock (Official)
 
-Shorter dock in Y dimension (depth), using a stubby base instead of the full base. This reduces Y build space loss by approximately half compared to standard docks (~10mm vs ~20mm). **Important**: Stubby docks are only compatible with crossbars mounted between the frame. They are **not compatible with externally-mounted crossbars (door buffer)** because the X carriage cannot reach the shorter docks when the crossbar is mounted externally.
+Shorter dock in Y dimension (depth), using a stubby base instead of the full base. This reduces Y build space loss by approximately half compared to standard docks (~10mm vs ~20mm). 
 
 - **Y Build Space Impact**: ~10mm loss (saves 10mm vs standard)
 - **Z Height**: Same as standard (170mm)
-- **Compatibility**: Not all toolheads support stubby docks - check individual toolhead pages for compatibility. Only works with crossbars mounted between the frame, not with door buffer configurations.
+- **Compatibility**: Not all toolheads support stubby docks - check individual toolhead pages for compatibility. **Only works with crossbars mounted between the frame, not with door buffer configurations**.
 
 ### Crabby Dock (User Mod)
 
-Minimal dock with no vertical supports - just a shaped plate bolted directly to the crossbar. Provides better visibility of toolheads when docked and maximum flexibility in dock positioning. May require additional securing methods (screws with PTFE tubes, magnets) to keep toolheads properly positioned.
+Minimal dock with no vertical supports - just a shaped plate bolted directly to the crossbar. Provides better visibility of toolheads when docked and maximum flexibility in dock positioning. May require additional securing methods (magnets or screws with PTFE tubes) to keep toolheads properly positioned.
 
 - **Y Build Space Impact**: Varies
 - **Z Height**: Varies
-- **Compatibility**: All crabby docks are user mods, not official Draftshift Design. Not compatible with the default door buffer configuration.
+- **Compatibility**: All crabby docks are user mods, not official Draftshift Design.
 
 ### How many toolheads can I fit?
 To calculate how many tools you can fit on the front of your printer you need to know the tools to use first and the amount of room for your front idlers (stock gantry also can't move the entire length of X so make sure you factor that in as well.
@@ -84,7 +84,6 @@ To calculate how many tools you can fit on the front of your printer you need to
 | Printer Size | Extrusion Length | Dock Width | Dock Spacing | Max Toolheads | Calculation | Total Used | Remaining Space | Actual Spacing | Notes |
 |--------------|------------------|------------|--------------|---------------|-------------|------------|-----------------|----------------|-------|
 | Voron 350 | 470mm | 76mm | 5mm | 5 | (470 - 40) ÷ (76 + 5) = 5.31 → 5 | 400mm (5×76 + 4×5) | 30mm | 7.5mm (30 ÷ 4) | 5 tools = 4 spaces, exceeds 5mm minimum |
-| Voron 300 | 420mm | 60mm | 5mm | 5 | (420 - 40) ÷ (60 + 5) = 5.85 → 5 | 320mm (5×60 + 4×5) | 60mm | 15mm (60 ÷ 4) | 6 tools would need 385mm (6×60 + 5×5), only 380mm available |
 | Voron 250 | 370mm | 60mm | 5mm | 5 | (370 - 40) ÷ (60 + 5) = 5.08 → 5 | 325mm (5×60 + 4×5) | 5mm | 1.25mm (5 ÷ 4) | Very tight spacing, may require modifying extruder tension bolt/spring |
 
 
@@ -112,7 +111,6 @@ A crossbar is not required, but is strongly recommended for stability. There are
    * vertical front plates can also help with resisting rotation
 * For existing builds with 2020 sides, front idlers will hit the crossbar, so you need to change idlers to use the <a href="https://github.com/DraftShift/StealthChanger/tree/main/UserMods/BT123/MiniBFI%20%2B%20MicroBFI">MiniBFI</a>
 * 20mm less Y build space unless you use shorter "stubby" docks, which reduce the loss to 10mm. Not all toolheads appreciate "stubby" docks.
-* Any other tips from people who've done this?
 * Image from @drakarah with MiniBFI and <a href="https://www.printables.com/model/994635-stealthchanger-stealthburner-minimal-docks-aka-hap/comments">Happy Crab Docks</a>, crossbar held in place with 90deg corner brackets.
 
 #### Mods
