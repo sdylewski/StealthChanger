@@ -39,7 +39,7 @@ parent: Toolheads
 
 ### Official PCB Mounts (Draftshift Design)
 
-*No official PCB mounts from Draftshift Design. See User Mods below.*
+*No official PCB mounts from Draftshift Design. See [Voron Toolhead PCB Mounts](https://github.com/chirpy2605/voron/tree/main/general/PCB_Mounts) or User Mods below.*
 
 ### User Mods
 

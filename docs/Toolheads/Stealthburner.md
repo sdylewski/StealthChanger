@@ -44,6 +44,8 @@ Having magnets that keep the toolhead in place in the docks and nicely aligned w
 
 *StealthBurner uses integrated PCB mounting in the toolhead design. SB2040 and SB2209 boards mount directly to the toolhead. For EBB36, see User Mods below.*
 
+
+
 ### User Mods
 
 | PCB | Extruder | Description | Link |

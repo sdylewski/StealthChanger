@@ -11,6 +11,9 @@ parent: Software & Configuration
 
 The macro was created by Contomo (SC.0164) for the StealthChanger community.
 
+<img src="../media/Software/Dock_tuner.png" width="500" alt="Dock Tuner Interface">
+*dock_tuner interactive interface*
+
 ## Installation
 
 1. Download the latest `dock_tuner.cfg` macro file:
@@ -49,8 +52,16 @@ Before using dock_tuner, ensure you have:
   - Step through each movement in the docking/undocking path
   - Adjust X, Y, and Z positions as needed (the macro will provide adjustment commands)
   - Test the docking and undocking sequence
+
+<img src="../media/Software/Dock_tuner_adjust.png" width="400" alt="Dock Tuner Adjustment">
+*Adjusting dock positions in dock_tuner*
+
 - Continue adjusting until the tool docks and undocks smoothly and reliably
 - When satisfied, the macro will output the final `params_park_x`, `params_park_y`, and `params_park_z` values in the console
+
+<img src="../media/Software/Dock_tuner_final.png" width="400" alt="Dock Tuner Final Values">
+*Final dock position values output by dock_tuner*
+
 - Copy these values to `stealthchanger/tools/T0.cfg` in the `[tool T0]` section:
   ```ini
   [tool T0]

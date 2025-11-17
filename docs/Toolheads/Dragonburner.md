@@ -15,11 +15,17 @@ parent: Toolheads
 
 ## Backplate
 
-* [recommended] [theSin Dragonburner backplate](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/TheSin-/Dragonburner_Backplate) for ebb36-style boards with Orbiter 2.5 or HGX Sherpa.
-* Draftshift Design [Dragonburner Backplate](https://github.com/DraftShift/StealthChanger/blob/main/STLs/Backplates/DragonBurner.stl) (no connection to toolhead board)
-* [Dragonburner spacer](https://github.com/DraftShift/StealthChanger/blob/main/STLs/Backplates/DragonBurner_Spacer.stl) (Required. goes between backplate and toolhead).
-* [Backplate assembly instructions](https://github.com/DraftShift/StealthChanger/blob/main/Manual/Stealthchanger_Assembly_Guide.pdf)
-* Requires supports. [Printing instructions](../Building/Printing.md)
+Pick one backplate and toolhead PCB option below.
+- [Dragonburner spacer](https://github.com/DraftShift/StealthChanger/blob/main/STLs/Backplates/DragonBurner_Spacer.stl) is required - goes between backplate and toolhead
+- [Backplate assembly instructions](https://github.com/DraftShift/StealthChanger/blob/main/Manual/Stealthchanger_Assembly_Guide.pdf)
+- Requires supports. [Printing instructions](../Building/Printing.md)
+
+| Backplate | PCB Mount Options | Notes |
+|-----------|-------------------|-------|
+| [official] **Draftshift Design**<br>[Dragonburner Backplate](https://github.com/DraftShift/StealthChanger/tree/main/STLs/Backplates) | [Voron PCB Mounts](https://github.com/chirpy2605/voron/tree/main/general/PCB_Mounts) with [extended extruder mount](https://github.com/chirpy2605/voron/tree/main/general/Alternative_Voron_Mounts/Extended_Extruder_Mounts) | Needs extended extruder mount to raise extruder so stock PCB mount will clear the OptoTap board |
+| [userMod] **TheSin's**<br>[Dragonburner backplate](https://github.com/DraftShift/StealthChanger/blob/main/UserMods/TheSin-/PCB36_Mount/DragonBurner.stl) | [TheSin's PCB36 mount](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/TheSin-/PCB36_Mount)<br>**Extruders:** Orbiter 2.5, HGX Sherpa, G2SA | Adds attachment points for PCB mount. May not be compatible with all extruders |
+| [userMod] **Traxman25's**<br>[Dragonburner backplate](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/traxman25) | [Dragonburner Orbiter EBB36 mount](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/traxman25/Dragonburner_EBB36_SC_Mount)<br>**Extruders:** Orbiter 2 | Combined with PCB mount for EBB36-compatible boards |
+
 
 ### Backplate BOM for All Tools
 
@@ -38,23 +44,9 @@ parent: Toolheads
 - [2] m3x8 BHCS (optional in v1.1)
 - Several 5x2 or 5x3 N52 magnets to hold toolhead to dock (Highly recommended for non-magnetic docks)
 
-## PCB Mounting Options
-
-### Official PCB Mounts (Draftshift Design)
-
-*No official PCB mounts from Draftshift Design. See User Mods below.*
-
-### User Mods
-
-| PCB | Extruder | Description | Link |
-|-----|----------|-------------|------|
-| EBB36, Nighthawk36, SHT36 | Orbiter 2.5, HGX Sherpa | Recommended: PCB36 mount and backplate. Needs [22mm standoffs](https://www.printables.com/model/1440113-m3-heatset-standoffs-10mm-30mm) for Orbiter 2 extruders and 17.5mm standoffs for G2SA. | [TheSin's PCB36 mount and backplate](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/TheSin-/PCB36_Mount) |
-| EBB36 | Orbiter 2.0 | EBB36 mount for Orbiter 2.0 extruder | [Dragon Burner EBB36 mount for the Orbiter2.0 extruder](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/cekim-git/EBB36Mount) |
-| EBB36 | Orbiter | Dragonburner Orbiter EBB36 mount | [Dragonburner Orbiter EBB36 mount](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/traxman25/Dragonburner_EBB36_SC_Mount) |
-
 ## Toolhead Options & Mods
 
-**Note:** Dragonburner [extended mount](https://github.com/chirpy2605/voron/tree/main/general/Alternative_Voron_Mounts/Extended_Extruder_Mounts) is required depending on extruder
+
 
 * [Dragonburner numbered cowls](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/traxman25) (non-magnetic)
 * [Dragonburner cowl mods](https://github.com/DraftShift/StealthChanger/blob/main/UserMods/OstroMa/README.md)
