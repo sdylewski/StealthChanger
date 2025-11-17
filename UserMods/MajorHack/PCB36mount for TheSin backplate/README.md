@@ -46,7 +46,7 @@ Additionally, this mount **adds support for the [G2SA (Galileo 2 Standalone)](ht
 
 - [TheSin's PCB36 Mount Repository](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/TheSin-/PCB36_Mount)
 - [G2SA (Galileo 2 Standalone) Documentation](https://github.com/JaredC01/Galileo2/tree/main/galileo2_standalone)
-
+- [OnShape cad source files for this mod](https://cad.onshape.com/documents/ee9921a7eea17b85eea5afa9/w/1b0cb8d125b61ca59dbf39be/e/8d3377c912dcb9d7e8b333d2)
 ---
 
 **Author**: MajorHack  
