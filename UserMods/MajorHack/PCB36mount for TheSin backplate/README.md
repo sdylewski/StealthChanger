@@ -2,7 +2,7 @@
 
 This PCB36 mount is designed for use with [TheSin's backplate](https://github.com/DraftShift/StealthChanger/tree/main/UserMods/TheSin-/PCB36_Mount) and provides secure mounting for EBB36, Nighthawk36, and SHT36 toolhead PCBs.
 
-![G2SA Backplate Assembly](images/G2SA_backplate.png)
+<img src="images/G2SA_backplate.png" width="400">
 *PCB36 mount installed on TheSin's backplate with G2SA extruder*
 
 ## Compatible Extruders
