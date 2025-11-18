@@ -106,7 +106,7 @@ By convention, these offsets are set to 0 for T0. The offsets for other tools sp
 
 
 
-**Note:** You can setup your printer to home with Tn if you're only using that one tool during printing, but it requires a more advanced print_start macro. See the [PRINT_START macro example](Examples/PRINT_START.md) for reference.
+**Note:** You can setup your printer to home with Tn if you're only using that one tool during printing, but it requires a more advanced print_start macro. See the [PRINT_START advanced example](Examples/PRINT_START_Advanced.md) for reference.
 
 
 ### G-code Z Offset Calibration Procedure
@@ -188,65 +188,6 @@ For information on available calibration probes and how to use them, see the [Me
 
 Additional calibration that may be needed per tool:
 
-### PID Tuning
-
-Each tool's heater may need PID tuning to maintain stable temperatures. PID tuning should be done for each tool's extruder heater.
-
-**Important:** The heater name differs between T0 and other tools:
-- **T0** uses `extruder` (no number)
-- **T1** uses `extruder1`
-- **T2** uses `extruder2`
-- And so on...
-
-**Procedure:**
-
-1. Select the tool you want to tune (e.g., `T0` or `SELECT_TOOL T=0`)
-2. Heat the nozzle to your typical printing temperature (e.g., 220°C for PLA, 250°C for ABS)
-3. Run the PID calibration command:
-   
-   **For T0:**
-   ```
-   PID_CALIBRATE HEATER=extruder TARGET=220
-   ```
-   
-   **For T1:**
-   ```
-   PID_CALIBRATE HEATER=extruder1 TARGET=220
-   ```
-   
-   **For T2:**
-   ```
-   PID_CALIBRATE HEATER=extruder2 TARGET=220
-   ```
-   
-   Adjust `TARGET` to your desired temperature.
-4. Wait for the calibration to complete
-5. The console will display the PID values (Kp, Ki, Kd). Copy these values.
-6. Manually add the PID values to your tool configuration file:
-   
-   **For T0** - Add to `stealthchanger/tools/T0.cfg` in the `[extruder]` section:
-   ```ini
-   [extruder]
-   control: pid
-   pid_Kp: <Kp_value>
-   pid_Ki: <Ki_value>
-   pid_Kd: <Kd_value>
-   ```
-   
-   **For T1** - Add to `stealthchanger/tools/T1.cfg` in the `[extruder1]` section:
-   ```ini
-   [extruder1]
-   control: pid
-   pid_Kp: <Kp_value>
-   pid_Ki: <Ki_value>
-   pid_Kd: <Kd_value>
-   ```
-   
-   **For T2+** - Add to `stealthchanger/tools/Tn.cfg` in the corresponding `[extrudern]` section.
-7. Run `FIRMWARE_RESTART` to apply the changes.
-
-**Note:** Each tool's PID values are independent and should be tuned separately for optimal temperature stability.
-
 ### E-steps Calibration
 
 Extruder steps per mm calibration ensures accurate filament extrusion. This should be done for each tool's extruder.
@@ -276,46 +217,7 @@ Extruder steps per mm calibration ensures accurate filament extrusion. This shou
 
 **Note:** If using `rotation_distance`, the formula is: `New rotation_distance = (Current rotation_distance × Actual distance) / 100`
 
-### Input Shaper Calibration
-
-Input shaper compensates for printer vibrations to reduce ringing and improve print quality. This is typically done once if you have the same exact toolheads.  If you have different toolhead types, you should run this for each tool.
-
-**Procedure:**
-
-1. Install an accelerometer on your toolhead (e.g., ADXL345, MPU-9250, or LIS2DW compatible)
-2. Configure the accelerometer in your `printer.cfg`:
-   ```ini
-   [adxl345]
-   cs_pin: <your_pin>
-   spi_speed: 5000000
-   
-   [resonance_tester]
-   accel_chip: adxl345
-   probe_points:
-       100, 100, 20  # Center of bed, 20mm above
-   ```
-3. Run the resonance test for X axis:
-   ```
-   TEST_RESONANCES AXIS=X
-   ```
-4. Run the resonance test for Y axis:
-   ```
-   TEST_RESONANCES AXIS=Y
-   ```
-5. Calculate input shaper parameters:
-   ```
-   SHAPER_CALIBRATE
-   ```
-6. Review the recommended shaper and frequency in the console output
-7. Apply the recommended settings or manually configure:
-   ```ini
-   [input_shaper]
-   shaper_freq_x: <recommended_frequency>
-   shaper_type_x: <recommended_shaper>  # e.g., mzv, ei, 2hump_ei
-   shaper_freq_y: <recommended_frequency>
-   shaper_type_y: <recommended_shaper>
-   ```
-8. Run `FIRMWARE_RESTART` to apply the changes
+For additional tuning including PID tuning and input shaper calibration, see [Additional Tuning](Additional_Tuning.md).
 
 
 
@@ -334,20 +236,5 @@ No. `SAVE_CONFIG` saves z-offset at the bottom of printer.cfg, not in the tool's
 ### My pressure advance doesn't work
 Make sure to put the PA values in your filament settings in the slicer. If you have multitool ramming enabled, it will set pressure advance to 0 when ramming on the wipe tower, and if it's not in the filament settings, it can't put it back to what it's supposed to be during the print.
 
-### Input Shaper shows "peak too far right" - what does this mean?
-This usually means the accelerometer data is not being read correctly, or the toolhead is too light/heavy for the test. Try:
-- Ensuring the accelerometer is properly mounted and connected
-- Running the test with a different toolhead if available
-- Checking that the accelerometer configuration matches your toolhead board
-- Verifying the accelerometer is working with `ACCELEROMETER_QUERY`
-
-### Do I need to run Input Shaper calibration for each tool?
-If your toolheads are significantly different in weight or mass distribution, you may need to run Input Shaper calibration for each tool. If all toolheads are identical, you can typically use the same input shaper settings for all tools.
-
-### My PID tuning values keep changing
-PID values should stabilize after a few tuning cycles. If they keep changing significantly, check:
-- Heater wiring connections
-- Thermistor connections
-- Heater block thermal paste/contact
-- Ambient temperature stability
-- Power supply stability
+### I'm getting a move out of range after a tool change
+If your slicer has moves close to the edge of the allowable range, it's possible that switching tools will cause the tool to try and move out of range due to the difference in gcode offset. If T0 is at 0,0 (and that's the absolute minimum), then switching to T1 will be 0,0 + T1's gcode x and y offset. If those are negative the printer will try to go out of range. This can be the case for e.g. purge lines generated by the slicer. Make sure you have enough padding around the edges of allowable movement that accounts for the largest gcode offset of any tool.

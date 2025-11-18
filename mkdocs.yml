@@ -44,7 +44,9 @@ nav:
   - Software & Configuration:
       - Software: Software.md
       - Configuration: Configuration.md
-      - Calibration: Calibration.md
+      - Toolhead Calibration:
+          - Toolhead Calibration: ToolCalibration.md
+          - Additional Tuning: Additional_Tuning.md
       - Slicers: Slicers.md
   - Support:
       - Contributing & Donating: Contributing-and-Donating.md

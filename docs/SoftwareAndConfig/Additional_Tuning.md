@@ -1,7 +1,7 @@
 ---
 title: Additional Tuning
-nav_order: 9
-parent: Software & Configuration
+nav_order: 2
+parent: Tool Calibration
 ---
 <!-- Use the page layout at TOC.md:  https://github.com/sdylewski/StealthChanger/blob/main/docs/TOC.md -->
 
@@ -11,37 +11,62 @@ Use this after your first successful print to refine quality and reliability. No
 
 ## Hotend PID Tuning
 
-PID tuning ensures your hotend maintains stable temperatures. Each toolhead has its own extruder and heater, so you need to tune PID for each one separately.
+Each tool's heater may need PID tuning to maintain stable temperatures. PID tuning should be done for each tool's extruder heater.
 
-**For each toolhead:**
+**Important:** The heater name differs between T0 and other tools:
+- **T0** uses `extruder` (no number)
+- **T1** uses `extruder1`
+- **T2** uses `extruder2`
+- And so on...
 
-1. **Select the toolhead** you want to tune:
+**Procedure:**
+
+1. Select the tool you want to tune (e.g., `T0` or `SELECT_TOOL T=0`)
+2. Heat the nozzle to your typical printing temperature (e.g., 220°C for PLA, 250°C for ABS)
+3. Run the PID calibration command:
+   
+   **For T0:**
    ```
-   SELECT_TOOL T=0  # Replace with your tool number
+   PID_CALIBRATE HEATER=extruder TARGET=220
    ```
-
-2. **Run PID calibration** at your typical printing temperature:
-   - **For T0 (extruder):**
-     ```
-     PID_CALIBRATE HEATER=extruder TARGET=220
-     ```
-   - **For T1 (extruder1):**
-     ```
-     PID_CALIBRATE HEATER=extruder1 TARGET=220
-     ```
-
-3. **Save the PID values** in your toolhead configuration file. After calibration completes, Klipper will display the recommended PID values in the console. Copy these values into the appropriate extruder section:
-
-   **Example for T1 (extruder1) - save in `Toolhead_T1.cfg`:**
+   
+   **For T1:**
+   ```
+   PID_CALIBRATE HEATER=extruder1 TARGET=220
+   ```
+   
+   **For T2:**
+   ```
+   PID_CALIBRATE HEATER=extruder2 TARGET=220
+   ```
+   
+   Adjust `TARGET` to your desired temperature.
+4. Wait for the calibration to complete
+5. The console will display the PID values (Kp, Ki, Kd). Copy these values.
+6. Manually add the PID values to your tool configuration file:
+   
+   **For T0** - Add to `stealthchanger/tools/T0.cfg` in the `[extruder]` section:
+   ```ini
+   [extruder]
+   control: pid
+   pid_Kp: <Kp_value>
+   pid_Ki: <Ki_value>
+   pid_Kd: <Kd_value>
+   ```
+   
+   **For T1** - Add to `stealthchanger/tools/T1.cfg` in the `[extruder1]` section:
    ```ini
    [extruder1]
-   # ... other extruder settings ...
-   control=pid
-   pid_kp = 26.213
-   pid_ki = 1.304
-   pid_kd = 131.721
-   # ... rest of extruder settings ...
+   control: pid
+   pid_Kp: <Kp_value>
+   pid_Ki: <Ki_value>
+   pid_Kd: <Kd_value>
    ```
+   
+   **For T2+** - Add to `stealthchanger/tools/Tn.cfg` in the corresponding `[extrudern]` section.
+7. Run `FIRMWARE_RESTART` to apply the changes.
+
+**Note:** Each tool's PID values are independent and should be tuned separately for optimal temperature stability. Replace `220` with your typical printing temperature for the material you're using. You may want to run PID calibration at different temperatures if you print with a wide range of materials (e.g., 220°C for PLA, 250°C for PETG, 280°C for ABS).
 
 
 ## Mesh and Z-offset touch-ups (first layer)
