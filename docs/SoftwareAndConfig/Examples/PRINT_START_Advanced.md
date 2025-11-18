@@ -192,3 +192,4 @@ If you need to customize the `PRINT_START` macro:
 **Note:** For multi-tool prints, T0 is used for QGL and Z homing to ensure accurate tool alignment. For single-tool prints, the macro uses the single tool for QGL to avoid unnecessary tool changes.
 
 
+
