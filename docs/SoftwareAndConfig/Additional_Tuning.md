@@ -1,7 +1,7 @@
 ---
 title: Additional Tuning
-nav_order: 2
-parent: Tool Calibration
+nav_order: 9
+parent: Software & Configuration
 ---
 <!-- Use the page layout at TOC.md:  https://github.com/sdylewski/StealthChanger/blob/main/docs/TOC.md -->
 
@@ -16,7 +16,7 @@ Each tool's heater may need PID tuning to maintain stable temperatures. PID tuni
 **Important:** The heater name differs between T0 and other tools:
 - **T0** uses `extruder` (no number)
 - **T1** uses `extruder1`
-- **T2** uses `extruder2`
+
 - And so on...
 
 **Procedure:**
@@ -34,11 +34,7 @@ Each tool's heater may need PID tuning to maintain stable temperatures. PID tuni
    ```
    PID_CALIBRATE HEATER=extruder1 TARGET=220
    ```
-   
-   **For T2:**
-   ```
-   PID_CALIBRATE HEATER=extruder2 TARGET=220
-   ```
+
    
    Adjust `TARGET` to your desired temperature.
 4. Wait for the calibration to complete
@@ -63,10 +59,8 @@ Each tool's heater may need PID tuning to maintain stable temperatures. PID tuni
    pid_Kd: <Kd_value>
    ```
    
-   **For T2+** - Add to `stealthchanger/tools/Tn.cfg` in the corresponding `[extrudern]` section.
 7. Run `FIRMWARE_RESTART` to apply the changes.
 
-**Note:** Each tool's PID values are independent and should be tuned separately for optimal temperature stability. Replace `220` with your typical printing temperature for the material you're using. You may want to run PID calibration at different temperatures if you print with a wide range of materials (e.g., 220°C for PLA, 250°C for PETG, 280°C for ABS).
 
 
 ## Mesh and Z-offset touch-ups (first layer)
