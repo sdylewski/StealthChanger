@@ -1,0 +1,18 @@
+title: StealthChanger Docs
+description: Tool changing system for Voron and others
+
+# Use the remote theme instead of `theme:`
+remote_theme: just-the-docs/just-the-docs
+
+# Required so GitHub Pages is allowed to fetch the remote theme
+plugins:
+  - jekyll-remote-theme
+
+# If your site is at https://<user>.github.io/<repo>
+url: https://sdylewski.github.io
+baseurl: /StealthChanger
+
+# Just the Docs options (examples)
+logo: /media/Logos/Stealthchanger_logo.svg
+search_enabled: true
+
